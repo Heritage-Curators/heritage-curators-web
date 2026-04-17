@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage Curators | Home</title>
+  <style>
+    :root {
+      --bg: #f5efe4;
+      --surface: rgba(255, 248, 236, 0.88);
+      --surface-strong: #fffaf1;
+      --line: rgba(63, 42, 24, 0.14);
+      --text: #24180f;
+      --muted: #6f5b49;
+      --accent: #a2482d;
+      --shadow: 0 20px 45px rgba(58, 37, 21, 0.12);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --max-width: 1180px;
+      --font-display: Georgia, "Times New Roman", serif;
+      --font-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(226, 173, 114, 0.45), transparent 32%),
+        radial-gradient(circle at right, rgba(162, 72, 45, 0.15), transparent 28%),
+        linear-gradient(180deg, #f8f2e7 0%, #efe3d0 100%);
+      min-height: 100vh;
+    }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .page-shell { width: min(var(--max-width), calc(100% - 2rem)); margin: 0 auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px);
+      background: rgba(245, 239, 228, 0.82); border-bottom: 1px solid rgba(63, 42, 24, 0.08);
+    }
+    .site-header__inner {
+      width: min(var(--max-width), calc(100% - 2rem)); margin: 0 auto; display: flex;
+      align-items: center; justify-content: space-between; padding: 1rem 0; gap: 1rem;
+    }
+    .brand { display: flex; align-items: center; gap: 0.9rem; }
+    .brand__mark {
+      width: 46px; height: 46px; border-radius: 16px; display: grid; place-items: center;
+      background: linear-gradient(135deg, #8d3d26, #d28f59); color: #fff7ef;
+      font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; box-shadow: var(--shadow);
+    }
+    .brand__text strong, .brand__text span { display: block; }
+    .brand__text strong {
+      font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .brand__text span { color: var(--muted); font-size: 0.88rem; }
+    .nav-toggle {
+      display: none; border: 0; background: var(--surface-strong); color: var(--text); border-radius: 999px;
+      padding: 0.75rem 1rem; font: inherit; box-shadow: var(--shadow); cursor: pointer;
+    }
+    .site-nav { display: flex; align-items: center; gap: 0.65rem; }
+    .site-nav a {
+      padding: 0.75rem 1rem; border-radius: 999px; color: var(--muted);
+      transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+    .site-nav a:hover, .site-nav a:focus-visible {
+      background: rgba(162, 72, 45, 0.08); color: var(--text); transform: translateY(-1px); outline: none;
+    }
+    .site-nav a.is-active { background: var(--text); color: #fffaf1; }
+    main { padding: 2rem 0 4rem; }
+    .hero {
+      display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 1.5rem; align-items: stretch; margin-top: 1.25rem;
+    }
+    .hero__content, .hero__panel, .section-card, .feature-card, .milestone-card, .callout, .site-footer {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow);
+    }
+    .hero__content { padding: 3rem; position: relative; overflow: hidden; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 0.85rem; border-radius: 999px;
+      background: rgba(162, 72, 45, 0.08); color: var(--accent); font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    h1, h2, h3 { font-family: var(--font-display); margin: 0; line-height: 1.05; }
+    h1 { font-size: clamp(3rem, 7vw, 5.3rem); margin-top: 1rem; max-width: 10ch; }
+    .hero__content p, .section-heading p, .feature-card p, .callout p, .hero__panel p, .milestone-card p, .site-footer p {
+      color: var(--muted); line-height: 1.7;
+    }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 1.75rem; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; padding: 0.95rem 1.25rem;
+      border-radius: 999px; font-weight: 600; transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .button:hover, .button:focus-visible { transform: translateY(-2px); outline: none; }
+    .button--primary { background: var(--text); color: #fffaf1; box-shadow: var(--shadow); }
+    .button--secondary { background: transparent; color: var(--text); border: 1px solid var(--line); }
+    .hero__stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem; margin-top: 2rem; }
+    .hero__stat {
+      padding: 1rem; background: rgba(255, 250, 241, 0.8); border-radius: var(--radius-md); border: 1px solid rgba(63, 42, 24, 0.08);
+    }
+    .hero__stat strong, .milestone-card strong {
+      display: block; font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 0.25rem;
+    }
+    .hero__panel { padding: 1.35rem; display: grid; gap: 1rem; align-content: start; }
+    .image-frame {
+      position: relative; overflow: hidden; min-height: 260px; border-radius: 20px; background: #dbc2a0;
+    }
+    .image-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .image-frame__badge {
+      position: absolute; left: 1rem; bottom: 1rem; padding: 0.55rem 0.8rem; border-radius: 999px;
+      background: rgba(36, 24, 15, 0.78); color: #fffaf1; font-size: 0.85rem;
+    }
+    .hero__details { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 0.25rem; }
+    .hero__details div span, .feature-card__meta, .section-label, .milestone-card span, .footer-links a {
+      color: var(--muted); font-size: 0.92rem;
+    }
+    .hero__details div strong { display: block; margin-top: 0.2rem; font-size: 1rem; }
+    .section { margin-top: 1.5rem; }
+    .section-card { padding: 2rem; }
+    .section-heading {
+      display: flex; justify-content: space-between; align-items: end; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+    }
+    .section-heading h2 { font-size: clamp(2rem, 5vw, 3rem); }
+    .section-heading p { max-width: 54ch; margin: 0.6rem 0 0; }
+    .feature-grid, .milestone-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem;
+    }
+    .feature-card { padding: 1rem; display: grid; gap: 1rem; min-height: 100%; }
+    .feature-card__image { aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-md); background: #d8c0a2; }
+    .feature-card__image img { width: 100%; height: 100%; object-fit: cover; }
+    .feature-card h3 { font-size: 1.45rem; margin-bottom: 0.45rem; }
+    .feature-card__meta { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: auto; }
+    .milestone-card { padding: 1.4rem; }
+    .callout {
+      margin-top: 1.5rem; padding: 2rem; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; align-items: center;
+    }
+    .site-footer {
+      margin: 1.5rem 0 2.25rem; padding: 1.4rem 1.6rem; display: flex; justify-content: space-between; gap: 1rem; align-items: center; flex-wrap: wrap;
+    }
+    .footer-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 920px) {
+      .hero, .callout { grid-template-columns: 1fr; }
+      .feature-grid, .milestone-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-toggle { display: inline-flex; }
+      .site-nav {
+        position: fixed; inset: 82px 1rem auto 1rem; flex-direction: column; align-items: stretch; padding: 1rem;
+        background: rgba(255, 250, 241, 0.96); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow);
+        transform: translateY(-18px); opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+      .site-nav.is-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    }
+    @media (max-width: 640px) {
+      .page-shell, .site-header__inner { width: min(var(--max-width), calc(100% - 1rem)); }
+      main { padding-top: 1rem; }
+      .hero__content, .section-card, .callout, .site-footer { padding: 1.35rem; }
+      .hero__panel { padding: 1rem; }
+      .hero__stats, .feature-grid, .milestone-grid { grid-template-columns: 1fr; }
+      h1 { font-size: clamp(2.6rem, 14vw, 4rem); }
+    }
+  </style>
+</head>
+<body data-page="home">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="home.html" aria-label="Heritage Curators home page">
+        <div class="brand__mark">HC</div>
+        <div class="brand__text">
+          <strong>Heritage Curators</strong>
+          <span>Preserving stories through design</span>
+        </div>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="home.html" data-nav="home">Home</a>
+        <a href="gallery.html" data-nav="gallery">Gallery</a>
+        <a href="members.html" data-nav="members">Members</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page-shell">
+    <section class="hero">
+      <article class="hero__content" data-reveal>
+        <span class="eyebrow">Beginning Phase</span>
+        <h1>Curating heritage into a living digital experience.</h1>
+        <p>This first build sets the shared foundation for the full website: one visual system, one card language, and one navigation flow that connects the home, gallery, and members pages.</p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="gallery.html">Explore the Gallery</a>
+          <a class="button button--secondary" href="members.html">Meet the Team</a>
+        </div>
+        <div class="hero__stats">
+          <div class="hero__stat"><strong>03</strong><span>Connected pages</span></div>
+          <div class="hero__stat"><strong>01</strong><span>Shared design system</span></div>
+          <div class="hero__stat"><strong>∞</strong><span>Room to grow</span></div>
+        </div>
+      </article>
+      <aside class="hero__panel" data-reveal>
+        <div class="image-frame">
+          <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1200&q=80" alt="Curated historical gallery display">
+          <span class="image-frame__badge">Reference placeholder image</span>
+        </div>
+        <div class="hero__details">
+          <div><span>Current focus</span><strong>Shared visual identity</strong></div>
+          <div><span>System type</span><strong>HTML + CSS + JS foundation</strong></div>
+        </div>
+      </aside>
+    </section>
+    <section class="section section-card" data-reveal>
+      <div class="section-heading">
+        <div><span class="section-label">Core Sections</span><h2>One site, three pages, one consistent story.</h2></div>
+        <p>The cards below establish the reusable content pattern we will keep refining in the next phases. Same spacing, same image treatment, same interaction rules.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-card__image"><img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80" alt="Historic objects and display archive"></div>
+          <div><h3>Home Experience</h3><p>A landing page that introduces the project, highlights featured collections, and guides visitors into the gallery and team pages.</p></div>
+          <div class="feature-card__meta"><span>Editorial hero</span><span>Primary entry point</span></div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__image"><img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=900&q=80" alt="Framed exhibits and visual archive wall"></div>
+          <div><h3>Gallery Layout</h3><p>A visual-first page ready for category filters, artwork details, exhibit captions, and future interactive browsing features.</p></div>
+          <div class="feature-card__meta"><span>Consistent cards</span><span>Ready for collection data</span></div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__image"><img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80" alt="Team collaborating in a creative workspace"></div>
+          <div><h3>Member Profiles</h3><p>A structured team page with equal-height profile cards, placeholder headshots, role labels, and future-ready biography content.</p></div>
+          <div class="feature-card__meta"><span>Profile consistency</span><span>Scalable team section</span></div>
+        </article>
+      </div>
+    </section>
+    <section class="section section-card" data-reveal>
+      <div class="section-heading">
+        <div><span class="section-label">Phase Roadmap</span><h2>Built slowly, but with a strong base.</h2></div>
+        <p>This phase focuses on cohesion first. Once the shared system is stable, we can add richer content, filters, animations, and stronger storytelling without redesigning the whole site.</p>
+      </div>
+      <div class="milestone-grid">
+        <article class="milestone-card"><span>Phase 1</span><strong>Foundation</strong><p>Shared UI, responsive navigation, reusable cards, image placeholders, and subtle page motion.</p></article>
+        <article class="milestone-card"><span>Phase 2</span><strong>Content Depth</strong><p>Replace placeholders with real collections, exhibition details, curator bios, and stronger cross-linking.</p></article>
+        <article class="milestone-card"><span>Phase 3</span><strong>Interactive Layer</strong><p>Filtering, richer transitions, featured stories, and a more advanced content architecture.</p></article>
+      </div>
+    </section>
+    <section class="callout" data-reveal>
+      <div>
+        <span class="section-label">Next Step Ready</span>
+        <h2>Use this landing page as the system anchor.</h2>
+        <p>The gallery and members pages already follow the same visual rules, so future changes can be applied confidently across the whole site.</p>
+      </div>
+      <a class="button button--primary" href="gallery.html">Continue to Gallery</a>
+    </section>
+  </main>
+  <footer class="page-shell site-footer">
+    <p>Heritage Curators, phase one concept site built for a cohesive cross-page experience.</p>
+    <div class="footer-links">
+      <a href="home.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="members.html">Members</a>
+    </div>
+  </footer>
+  <script>
+    const body = document.body;
+    const page = body.dataset.page;
+    const nav = document.getElementById("site-nav");
+    const toggle = document.querySelector(".nav-toggle");
+    document.querySelectorAll("[data-nav]").forEach((link) => {
+      if (link.dataset.nav === page) {
+        link.classList.add("is-active");
+        link.setAttribute("aria-current", "page");
+      }
+    });
+    if (toggle && nav) {
+      toggle.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        body.classList.toggle("menu-open", isOpen);
+      });
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+          body.classList.remove("menu-open");
+        });
+      });
+    }
+    const reveals = document.querySelectorAll("[data-reveal]");
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+    reveals.forEach((item) => revealObserver.observe(item));
+  </script>
+</body>
+</html>

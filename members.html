@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage Curators | Members</title>
+  <style>
+    :root {
+      --surface: rgba(255, 248, 236, 0.88);
+      --surface-strong: #fffaf1;
+      --line: rgba(63, 42, 24, 0.14);
+      --text: #24180f;
+      --muted: #6f5b49;
+      --accent: #a2482d;
+      --shadow: 0 20px 45px rgba(58, 37, 21, 0.12);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --max-width: 1180px;
+      --font-display: Georgia, "Times New Roman", serif;
+      --font-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: var(--font-body); color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(226, 173, 114, 0.45), transparent 32%),
+        radial-gradient(circle at right, rgba(162, 72, 45, 0.15), transparent 28%),
+        linear-gradient(180deg, #f8f2e7 0%, #efe3d0 100%);
+      min-height: 100vh;
+    }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .page-shell { width: min(var(--max-width), calc(100% - 2rem)); margin: 0 auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px);
+      background: rgba(245, 239, 228, 0.82); border-bottom: 1px solid rgba(63, 42, 24, 0.08);
+    }
+    .site-header__inner {
+      width: min(var(--max-width), calc(100% - 2rem)); margin: 0 auto; display: flex;
+      align-items: center; justify-content: space-between; padding: 1rem 0; gap: 1rem;
+    }
+    .brand { display: flex; align-items: center; gap: 0.9rem; }
+    .brand__mark {
+      width: 46px; height: 46px; border-radius: 16px; display: grid; place-items: center;
+      background: linear-gradient(135deg, #8d3d26, #d28f59); color: #fff7ef;
+      font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; box-shadow: var(--shadow);
+    }
+    .brand__text strong, .brand__text span { display: block; }
+    .brand__text strong { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .brand__text span { color: var(--muted); font-size: 0.88rem; }
+    .nav-toggle {
+      display: none; border: 0; background: var(--surface-strong); color: var(--text);
+      border-radius: 999px; padding: 0.75rem 1rem; font: inherit; box-shadow: var(--shadow); cursor: pointer;
+    }
+    .site-nav { display: flex; align-items: center; gap: 0.65rem; }
+    .site-nav a {
+      padding: 0.75rem 1rem; border-radius: 999px; color: var(--muted);
+      transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+    .site-nav a:hover, .site-nav a:focus-visible {
+      background: rgba(162, 72, 45, 0.08); color: var(--text); transform: translateY(-1px); outline: none;
+    }
+    .site-nav a.is-active { background: var(--text); color: #fffaf1; }
+    main { padding: 2rem 0 4rem; }
+    .page-intro, .member-card, .values-panel, .site-footer {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow);
+    }
+    .page-intro {
+      padding: 2.4rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
+      gap: 1.5rem; align-items: center; margin-top: 1.25rem;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 0.85rem; border-radius: 999px;
+      background: rgba(162, 72, 45, 0.08); color: var(--accent); font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    h1, h2, h3 { font-family: var(--font-display); margin: 0; line-height: 1.05; }
+    h1 { font-size: clamp(2.8rem, 7vw, 4.8rem); margin-top: 1rem; max-width: 12ch; }
+    p { color: var(--muted); line-height: 1.7; }
+    .intro-image, .member-card__portrait { overflow: hidden; background: #d8c0a2; }
+    .intro-image { border-radius: 20px; min-height: 280px; }
+    .intro-image img, .member-card__portrait img { width: 100%; height: 100%; object-fit: cover; }
+    .section { margin-top: 1.5rem; }
+    .section-heading {
+      display: flex; justify-content: space-between; align-items: end; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;
+    }
+    .section-label { color: var(--muted); font-size: 0.92rem; }
+    .section-heading h2 { font-size: clamp(2rem, 5vw, 3rem); }
+    .member-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .member-card { padding: 1rem; display: grid; gap: 1rem; min-height: 100%; transition: transform 0.28s ease; }
+    .member-card:hover { transform: translateY(-4px); }
+    .member-card__portrait { aspect-ratio: 4 / 4.25; border-radius: var(--radius-md); }
+    .member-card__role {
+      display: inline-flex; align-items: center; padding: 0.45rem 0.8rem; border-radius: 999px;
+      background: rgba(162, 72, 45, 0.1); color: var(--accent); font-size: 0.82rem; width: fit-content;
+    }
+    .member-card h3 { font-size: 1.45rem; margin: 0.7rem 0 0.35rem; }
+    .member-card__meta {
+      display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: auto; font-size: 0.92rem; color: var(--muted);
+    }
+    .values-panel { margin-top: 1.5rem; padding: 1.4rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .value-card {
+      padding: 1.2rem; border-radius: var(--radius-md); background: rgba(255, 250, 241, 0.82); border: 1px solid rgba(63, 42, 24, 0.08);
+    }
+    .value-card h3 { font-size: 1.35rem; margin-bottom: 0.45rem; }
+    .site-footer {
+      margin: 1.5rem 0 2.25rem; padding: 1.4rem 1.6rem; display: flex; justify-content: space-between;
+      gap: 1rem; align-items: center; flex-wrap: wrap;
+    }
+    .footer-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .footer-links a { color: var(--muted); font-size: 0.92rem; }
+    [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 920px) {
+      .page-intro, .values-panel { grid-template-columns: 1fr; }
+      .member-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-toggle { display: inline-flex; }
+      .site-nav {
+        position: fixed; inset: 82px 1rem auto 1rem; flex-direction: column; align-items: stretch; padding: 1rem;
+        background: rgba(255, 250, 241, 0.96); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow);
+        transform: translateY(-18px); opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+      .site-nav.is-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    }
+    @media (max-width: 640px) {
+      .page-shell, .site-header__inner { width: min(var(--max-width), calc(100% - 1rem)); }
+      main { padding-top: 1rem; }
+      .page-intro, .member-card, .values-panel, .site-footer { padding: 1.2rem; }
+      .member-grid { grid-template-columns: 1fr; }
+      h1 { font-size: clamp(2.5rem, 14vw, 4rem); }
+    }
+  </style>
+</head>
+<body data-page="members">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="home.html" aria-label="Heritage Curators home page">
+        <div class="brand__mark">HC</div>
+        <div class="brand__text"><strong>Heritage Curators</strong><span>Preserving stories through design</span></div>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="home.html" data-nav="home">Home</a>
+        <a href="gallery.html" data-nav="gallery">Gallery</a>
+        <a href="members.html" data-nav="members">Members</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page-shell">
+    <section class="page-intro" data-reveal>
+      <div>
+        <span class="eyebrow">Curatorial Team</span>
+        <h1>Consistent profile cards for the people behind the collection.</h1>
+        <p>This first version of the members page is built around reusable, equal-feeling profile cards so the team can grow without the layout becoming uneven or improvised later.</p>
+      </div>
+      <div class="intro-image"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80" alt="Creative team gathered in a collaborative space"></div>
+    </section>
+    <section class="section" data-reveal>
+      <div class="section-heading">
+        <div><span class="section-label">Founding Team</span><h2>Placeholder members with a polished shared card structure.</h2></div>
+        <p>Every card uses the same portrait ratio, spacing model, role label, and metadata line, which keeps the page cohesive even before real biographies are added.</p>
+      </div>
+      <div class="member-grid">
+        <article class="member-card">
+          <div class="member-card__portrait"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80" alt="Placeholder portrait of a lead curator"></div>
+          <div><span class="member-card__role">Lead Curator</span><h3>Amara Villanueva</h3><p>Oversees collection direction, exhibition storytelling, and the curatorial logic that ties the archive together.</p></div>
+          <div class="member-card__meta"><span>Collections strategy</span><span>Member 01</span></div>
+        </article>
+        <article class="member-card">
+          <div class="member-card__portrait"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80" alt="Placeholder portrait of an archive researcher"></div>
+          <div><span class="member-card__role">Archive Researcher</span><h3>Mateo de Leon</h3><p>Builds the historical backbone of the project through source gathering, provenance tracking, and exhibit references.</p></div>
+          <div class="member-card__meta"><span>Research and records</span><span>Member 02</span></div>
+        </article>
+        <article class="member-card">
+          <div class="member-card__portrait"><img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=80" alt="Placeholder portrait of a design lead"></div>
+          <div><span class="member-card__role">Experience Designer</span><h3>Leila Santos</h3><p>Shapes the digital experience, ensuring the website feels cohesive, readable, and visually intentional across every page.</p></div>
+          <div class="member-card__meta"><span>UI and content flow</span><span>Member 03</span></div>
+        </article>
+        <article class="member-card">
+          <div class="member-card__portrait"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80" alt="Placeholder portrait of a conservation specialist"></div>
+          <div><span class="member-card__role">Conservation Specialist</span><h3>Rafael Ibarra</h3><p>Guides preservation narratives, care notes, and material context for fragile heritage objects featured in the archive.</p></div>
+          <div class="member-card__meta"><span>Preservation insight</span><span>Member 04</span></div>
+        </article>
+        <article class="member-card">
+          <div class="member-card__portrait"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80" alt="Placeholder portrait of a community liaison"></div>
+          <div><span class="member-card__role">Community Liaison</span><h3>Clara Mendoza</h3><p>Connects community voices to the project and ensures represented stories remain grounded, respectful, and collaborative.</p></div>
+          <div class="member-card__meta"><span>Outreach and partnerships</span><span>Member 05</span></div>
+        </article>
+        <article class="member-card">
+          <div class="member-card__portrait"><img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80" alt="Placeholder portrait of a digital producer"></div>
+          <div><span class="member-card__role">Digital Producer</span><h3>Jonah Castillo</h3><p>Coordinates implementation, media preparation, and the next technical phase of the heritage platform.</p></div>
+          <div class="member-card__meta"><span>Production workflow</span><span>Member 06</span></div>
+        </article>
+      </div>
+    </section>
+    <section class="values-panel" data-reveal>
+      <article class="value-card"><h3>Shared Rhythm</h3><p>The member cards reuse the same spacing discipline and image ratios established across the site.</p></article>
+      <article class="value-card"><h3>Future Ready</h3><p>These placeholders can later expand into full bios, links, specialties, and curator notes.</p></article>
+      <article class="value-card"><h3>Cross-Page Flow</h3><p>The members page now feels like part of the same site system rather than a disconnected section.</p></article>
+    </section>
+  </main>
+  <footer class="page-shell site-footer">
+    <p>Members phase one is ready for real team content while keeping the overall UI consistent with the site.</p>
+    <div class="footer-links">
+      <a href="home.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="members.html">Members</a>
+    </div>
+  </footer>
+  <script>
+    const body = document.body;
+    const page = body.dataset.page;
+    const nav = document.getElementById("site-nav");
+    const toggle = document.querySelector(".nav-toggle");
+    document.querySelectorAll("[data-nav]").forEach((link) => {
+      if (link.dataset.nav === page) {
+        link.classList.add("is-active");
+        link.setAttribute("aria-current", "page");
+      }
+    });
+    if (toggle && nav) {
+      toggle.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        body.classList.toggle("menu-open", isOpen);
+      });
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+          body.classList.remove("menu-open");
+        });
+      });
+    }
+    const reveals = document.querySelectorAll("[data-reveal]");
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+    reveals.forEach((item) => revealObserver.observe(item));
+  </script>
+</body>
+</html>
