@@ -40,3 +40,23 @@ if (reveals.length) {
 
   reveals.forEach((item) => revealObserver.observe(item));
 }
+
+const backToTopButton = document.querySelector("[data-back-to-top]");
+
+if (backToTopButton) {
+  const toggleBackToTop = () => {
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+    const isNearBottom = scrollPosition >= pageHeight - 220;
+
+    backToTopButton.classList.toggle("is-visible", isNearBottom);
+  };
+
+  backToTopButton.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  window.addEventListener("scroll", toggleBackToTop, { passive: true });
+  window.addEventListener("resize", toggleBackToTop);
+  toggleBackToTop();
+}

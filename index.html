@@ -13,7 +13,7 @@
         <div class="brand__mark">HC</div>
         <div class="brand__text">
           <strong>Heritage Curators</strong>
-          <span>Art Appreciation Project</span>
+          <span>Digital Museum Experience</span>
         </div>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -27,19 +27,28 @@
 
   <main class="page-shell">
     <section class="hero" data-reveal>
-      <span class="eyebrow">Minimal Landing Page</span>
-      <h1>Heritage Curators</h1>
-      <p>A simple space for viewing selected artworks, reading short analyses, and meeting the students behind the project.</p>
+      <div class="hero__content">
+        <span class="eyebrow">Welcome to the Collection</span>
+        <h1>Heritage Curators</h1>
+        <p>Step into a digital gallery of Filipino masterpieces, where each work is presented with historical context, close reading, and curatorial care.</p>
+        <div class="hero__actions">
+          <a class="cta-button" href="gallery.html">View the Gallery</a>
+          <a class="cta-button cta-button--secondary" href="members.html">Meet the Team</a>
+        </div>
+      </div>
+      <div class="hero__artwork">
+        <img src="images/artwork/planting-rice.webp" alt="Planting Rice by Fernando Amorsolo featured on the home banner">
+      </div>
     </section>
 
     <section class="section section-panel" data-reveal>
       <div class="section-heading">
         <div>
-          <span class="section-label">Featured Works</span>
-          <h2>Swipe through the collection</h2>
+          <span class="section-label">Featured Collection</span>
+          <h2>Browse the featured works</h2>
         </div>
         <div class="carousel-controls" aria-label="Carousel controls">
-          <button class="carousel-button" type="button" data-carousel-prev aria-label="Show previous artwork">Prev</button>
+          <button class="carousel-button" type="button" data-carousel-prev aria-label="Show previous artwork">Previous</button>
           <button class="carousel-button" type="button" data-carousel-next aria-label="Show next artwork">Next</button>
         </div>
       </div>
@@ -110,31 +119,24 @@
       </div>
     </section>
 
-    <section class="section quick-links" data-reveal>
-      <a class="link-card" href="gallery.html">
-        <span class="section-label">Explore</span>
-        <h2>Gallery</h2>
-        <p>View the full set of artworks with descriptions and analysis.</p>
-      </a>
-
-      <a class="link-card" href="members.html">
-        <span class="section-label">Meet</span>
-        <h2>Members</h2>
-        <p>See the student profiles, roles, and art interests behind the project.</p>
-      </a>
+    <section class="section cta-strip" data-reveal>
+      <div class="cta-strip__text">
+        <span class="section-label">Continue the Visit</span>
+        <h2>Explore the exhibition or meet the students behind it.</h2>
+      </div>
+      <div class="cta-strip__actions">
+        <a class="cta-button" href="gallery.html">Open Gallery</a>
+        <a class="cta-button cta-button--secondary" href="members.html">Open Members</a>
+      </div>
     </section>
   </main>
 
-  <footer class="page-shell site-footer">
-    <p>Heritage Curators presents selected artworks and the students behind the project in a clean, minimal layout.</p>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="members.html">Members</a>
-    </div>
-  </footer>
+  <button class="back-to-top" type="button" aria-label="Back to top" data-back-to-top>
+    <span aria-hidden="true">&uarr;</span>
+  </button>
 
   <script src="scripts/site.js"></script>
   <script src="scripts/home.js"></script>
 </body>
 </html>
+

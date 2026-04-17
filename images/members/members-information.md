@@ -50,3 +50,8 @@ Name: Ron Cristofer Ravancho
 Role: Analyst
 Favorite Art Style: Realism / Portrait Sketching 
 Why I Appreciate Art: I appreciate art because it captures raw human emotion and tells stories without using words. It reminds us of our shared experiences.
+
+Name: Louis Gabriel Peralta
+Role: Content Researcher 
+Favorite Art Style: Realism/Sketching
+Why I Appreciate Art: I appreciate art because it captures life as it truly is, revealing beauty and truth in the everyday details we often overlook.

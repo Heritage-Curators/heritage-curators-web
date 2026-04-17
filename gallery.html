@@ -11,7 +11,7 @@
     <div class="site-header__inner">
       <a class="brand" href="index.html" aria-label="Heritage Curators home page">
         <div class="brand__mark">HC</div>
-        <div class="brand__text"><strong>Heritage Curators</strong><span>Preserving stories through design</span></div>
+        <div class="brand__text"><strong>Heritage Curators</strong><span>Digital Museum Experience</span></div>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
@@ -23,29 +23,32 @@
   </header>
   <main class="page-shell">
     <section class="page-intro" data-reveal>
-      <div>
+      <img class="page-intro__backdrop" src="images/artwork/spolarium.webp" alt="Spoliarium by Juan Luna used as the gallery banner artwork">
+      <div class="page-intro__overlay"></div>
+      <div class="page-intro__content">
         <span class="eyebrow">Art Appreciation Gallery</span>
-        <h1>Five Filipino masterpieces presented with context and analysis.</h1>
-        <p>This page now combines artwork images, historical background, and short Art Appreciation readings so each piece can be understood through subject, composition, symbolism, and meaning.</p>
-      </div>
-      <div class="intro-image">
-        <img src="images/artwork/spolarium.webp" alt="Spoliarium by Juan Luna used as the gallery banner artwork">
+        <h1>Works in Philippine art and visual interpretation.</h1>
+        <p style="margin-top: 10px;">This gallery brings together image, historical background, and critical reading so that each work may be appreciated through subject, form, symbolism, and cultural significance.</p>
       </div>
     </section>
 
-    <section class="section filter-panel" data-reveal>
-      <span class="filter-label">Filter by artist:</span>
+    <!-- <section class="section filter-panel" data-reveal>
+      <span class="filter-label">Browse by artist:</span>
       <button class="filter-chip is-active" type="button" data-filter="all">All</button>
       <button class="filter-chip" type="button" data-filter="amorsolo">Fernando Amorsolo</button>
       <button class="filter-chip" type="button" data-filter="luna">Juan Luna</button>
-    </section>
+    </section> -->
 
-    <section class="section gallery-grid">
+    <section class="section gallery-grid" aria-label="Artwork exhibition sequence">
       <article class="gallery-card" data-reveal data-category="amorsolo">
+        <div class="gallery-card__stage">
         <div class="gallery-card__image">
           <img src="images/artwork/planting-rice.webp" alt="Planting Rice by Fernando Amorsolo showing Filipino farmers working together in a bright rice field">
         </div>
+        </div>
+        <div class="gallery-card__details">
         <div class="gallery-card__header">
+          <div class="gallery-card__kicker"><span>01</span><span>Fernando Amorsolo</span></div>
           <h3>Planting Rice</h3>
           <p>This painting depicts Filipino farmers working together in a rice field under bright sunlight, presenting rural labor as peaceful, dignified, and deeply connected to the land.</p>
         </div>
@@ -55,35 +58,45 @@
           <div><strong>Medium:</strong> <span>Oil on canvas</span></div>
           <div><strong>Location:</strong> <span>National Museum of Fine Arts, Manila</span></div>
         </div>
-        <details class="analysis-panel">
-          <summary>Art Appreciation analysis</summary>
+        <section class="analysis-panel" aria-label="Curatorial reading for Planting Rice">
+          <div class="analysis-tabs" role="tablist" aria-label="Curatorial reading sections for Planting Rice">
+            <button class="analysis-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="planting-rice-description" id="planting-rice-tab-description" data-tab-target="planting-rice-description">Description</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="planting-rice-analysis" id="planting-rice-tab-analysis" data-tab-target="planting-rice-analysis">Analysis</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="planting-rice-interpretation" id="planting-rice-tab-interpretation" data-tab-target="planting-rice-interpretation">Interpretation</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="planting-rice-judgment" id="planting-rice-tab-judgment" data-tab-target="planting-rice-judgment">Judgment</button>
+          </div>
           <div class="analysis-panel__content">
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block is-active" id="planting-rice-description" role="tabpanel" aria-labelledby="planting-rice-tab-description">
               <h4>Description</h4>
               <p><em>Planting Rice</em> shows men and women planting seedlings together in a broad, water-filled field while a farmer with a carabao works in the background. The landscape, bright sky, and distant mountains create an idealized view of provincial life.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="planting-rice-analysis" role="tabpanel" aria-labelledby="planting-rice-tab-analysis" hidden>
               <h4>Analysis</h4>
               <p>Amorsolo uses warm sunlight, luminous reflections, and a wide composition to unify the workers with the landscape. His soft brushwork and bright color palette make the scene feel calm and orderly rather than physically harsh.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="planting-rice-interpretation" role="tabpanel" aria-labelledby="planting-rice-tab-interpretation" hidden>
               <h4>Interpretation</h4>
               <p>The painting celebrates bayanihan, rural resilience, and the dignity of ordinary Filipino labor. It presents the countryside as a source of identity, pride, and harmony with nature.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="planting-rice-judgment" role="tabpanel" aria-labelledby="planting-rice-tab-judgment" hidden>
               <h4>Judgment</h4>
               <p>This work remains one of the most recognizable images in Philippine art because it turns daily agricultural work into a graceful national image. Even with its idealized tone, it powerfully reflects Amorsolo's mastery of Philippine light.</p>
             </div>
           </div>
-        </details>
+        </section>
         <div class="gallery-card__meta"><span>Fernando Amorsolo</span><span>Rural Life</span></div>
+        </div>
       </article>
 
       <article class="gallery-card" data-reveal data-category="luna">
+        <div class="gallery-card__stage">
         <div class="gallery-card__image">
           <img src="images/artwork/the-blood-compact.webp" alt="The Blood Compact by Juan Luna showing Datu Sikatuna and Miguel Lopez de Legazpi sealing an agreement">
         </div>
+        </div>
+        <div class="gallery-card__details">
         <div class="gallery-card__header">
+          <div class="gallery-card__kicker"><span>02</span><span>Juan Luna</span></div>
           <h3>The Blood Compact</h3>
           <p>This painting shows the 1565 sandugo between Datu Sikatuna and Miguel Lopez de Legazpi, turning a diplomatic ritual into a statement about equality, dignity, and historical memory.</p>
         </div>
@@ -93,35 +106,45 @@
           <div><strong>Medium:</strong> <span>Oil on canvas</span></div>
           <div><strong>Location:</strong> <span>Malacanang Palace, Manila</span></div>
         </div>
-        <details class="analysis-panel">
-          <summary>Art Appreciation analysis</summary>
+        <section class="analysis-panel" aria-label="Curatorial reading for The Blood Compact">
+          <div class="analysis-tabs" role="tablist" aria-label="Curatorial reading sections for The Blood Compact">
+            <button class="analysis-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="blood-compact-description" id="blood-compact-tab-description" data-tab-target="blood-compact-description">Description</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="blood-compact-analysis" id="blood-compact-tab-analysis" data-tab-target="blood-compact-analysis">Analysis</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="blood-compact-interpretation" id="blood-compact-tab-interpretation" data-tab-target="blood-compact-interpretation">Interpretation</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="blood-compact-judgment" id="blood-compact-tab-judgment" data-tab-target="blood-compact-judgment">Judgment</button>
+          </div>
           <div class="analysis-panel__content">
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block is-active" id="blood-compact-description" role="tabpanel" aria-labelledby="blood-compact-tab-description">
               <h4>Description</h4>
               <p>The artwork presents the blood compact ceremony between the Bohol chieftain Datu Sikatuna and the Spanish explorer Miguel Lopez de Legazpi. Their gathered companions and the formal setting heighten the importance of the event.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="blood-compact-analysis" role="tabpanel" aria-labelledby="blood-compact-tab-analysis" hidden>
               <h4>Analysis</h4>
               <p>Luna uses an academic style, strong contrasts of light and shadow, and a carefully staged composition to dramatize the agreement. Viewing Sikatuna prominently helps frame the encounter as a meeting between equals rather than a scene of submission.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="blood-compact-interpretation" role="tabpanel" aria-labelledby="blood-compact-tab-interpretation" hidden>
               <h4>Interpretation</h4>
               <p>The painting can be read as a nationalist statement. It reminds viewers that Filipinos entered diplomacy and alliance with dignity, challenging colonial narratives that reduced them to passive subjects.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="blood-compact-judgment" role="tabpanel" aria-labelledby="blood-compact-tab-judgment" hidden>
               <h4>Judgment</h4>
               <p><em>The Blood Compact</em> succeeds both as historical storytelling and political symbolism. Its visual authority helps reclaim a key moment in Philippine history with pride and seriousness.</p>
             </div>
           </div>
-        </details>
+        </section>
         <div class="gallery-card__meta"><span>Juan Luna</span><span>Historical Narrative</span></div>
+        </div>
       </article>
 
       <article class="gallery-card" data-reveal data-category="luna">
+        <div class="gallery-card__stage">
         <div class="gallery-card__image">
           <img src="images/artwork/spolarium.webp" alt="Spoliarium by Juan Luna showing fallen gladiators being dragged in a dark Roman interior">
         </div>
+        </div>
+        <div class="gallery-card__details">
         <div class="gallery-card__header">
+          <div class="gallery-card__kicker"><span>03</span><span>Juan Luna</span></div>
           <h3>Spoliarium</h3>
           <p>This monumental painting depicts fallen gladiators dragged into a Roman spoliarium, using violence and grief to symbolize oppression and the loss of human dignity.</p>
         </div>
@@ -131,35 +154,45 @@
           <div><strong>Medium:</strong> <span>Oil on canvas</span></div>
           <div><strong>Location:</strong> <span>National Museum of Fine Arts, Manila</span></div>
         </div>
-        <details class="analysis-panel">
-          <summary>Art Appreciation analysis</summary>
+        <section class="analysis-panel" aria-label="Curatorial reading for Spoliarium">
+          <div class="analysis-tabs" role="tablist" aria-label="Curatorial reading sections for Spoliarium">
+            <button class="analysis-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="spoliarium-description" id="spoliarium-tab-description" data-tab-target="spoliarium-description">Description</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="spoliarium-analysis" id="spoliarium-tab-analysis" data-tab-target="spoliarium-analysis">Analysis</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="spoliarium-interpretation" id="spoliarium-tab-interpretation" data-tab-target="spoliarium-interpretation">Interpretation</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="spoliarium-judgment" id="spoliarium-tab-judgment" data-tab-target="spoliarium-judgment">Judgment</button>
+          </div>
           <div class="analysis-panel__content">
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block is-active" id="spoliarium-description" role="tabpanel" aria-labelledby="spoliarium-tab-description">
               <h4>Description</h4>
               <p>The scene shows dead or defeated gladiators dragged across a stone floor while grieving figures and distant onlookers witness the aftermath. The setting is dark, heavy, and emotionally charged.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="spoliarium-analysis" role="tabpanel" aria-labelledby="spoliarium-tab-analysis" hidden>
               <h4>Analysis</h4>
               <p>Luna builds a diagonal, forceful composition using harsh light, deep shadows, and rich red-brown tones. The physical weight of the bodies and the movement of the figures create a dramatic sense of brutality and exhaustion.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="spoliarium-interpretation" role="tabpanel" aria-labelledby="spoliarium-tab-interpretation" hidden>
               <h4>Interpretation</h4>
               <p>Beyond its Roman subject, the painting is widely understood as an allegory of colonial oppression. The fallen gladiators can be seen as the suffering Filipino people, while the spectators stand for power structures that ignore injustice.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="spoliarium-judgment" role="tabpanel" aria-labelledby="spoliarium-tab-judgment" hidden>
               <h4>Judgment</h4>
               <p><em>Spoliarium</em> is a landmark of Philippine art because it combines technical excellence with emotional and political force. Its international recognition helped affirm Filipino artistic brilliance on the world stage.</p>
             </div>
           </div>
-        </details>
+        </section>
         <div class="gallery-card__meta"><span>Juan Luna</span><span>Colonial Allegory</span></div>
+        </div>
       </article>
 
       <article class="gallery-card" data-reveal data-category="amorsolo">
+        <div class="gallery-card__stage">
         <div class="gallery-card__image">
           <img src="images/artwork/fruit-gatherer-1950-fernando-amorsolo.webp" alt="Fruit Gatherer by Fernando Amorsolo showing a Filipina woman with a basket of fruit in a rural setting">
         </div>
+        </div>
+        <div class="gallery-card__details">
         <div class="gallery-card__header">
+          <div class="gallery-card__kicker"><span>04</span><span>Fernando Amorsolo</span></div>
           <h3>Fruit Gatherer</h3>
           <p>This painting features a Filipina woman carrying freshly gathered fruit, highlighting natural abundance, traditional beauty, and the quiet rhythm of provincial life.</p>
         </div>
@@ -169,35 +202,45 @@
           <div><strong>Medium:</strong> <span>Oil on board</span></div>
           <div><strong>Location:</strong> <span>Vargas Museum, University of the Philippines</span></div>
         </div>
-        <details class="analysis-panel">
-          <summary>Art Appreciation analysis</summary>
+        <section class="analysis-panel" aria-label="Curatorial reading for Fruit Gatherer">
+          <div class="analysis-tabs" role="tablist" aria-label="Curatorial reading sections for Fruit Gatherer">
+            <button class="analysis-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="fruit-gatherer-description" id="fruit-gatherer-tab-description" data-tab-target="fruit-gatherer-description">Description</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="fruit-gatherer-analysis" id="fruit-gatherer-tab-analysis" data-tab-target="fruit-gatherer-analysis">Analysis</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="fruit-gatherer-interpretation" id="fruit-gatherer-tab-interpretation" data-tab-target="fruit-gatherer-interpretation">Interpretation</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="fruit-gatherer-judgment" id="fruit-gatherer-tab-judgment" data-tab-target="fruit-gatherer-judgment">Judgment</button>
+          </div>
           <div class="analysis-panel__content">
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block is-active" id="fruit-gatherer-description" role="tabpanel" aria-labelledby="fruit-gatherer-tab-description">
               <h4>Description</h4>
               <p>The painting shows a young Filipina in traditional clothing under a tree, holding a basket filled with fruit. The setting is bright, calm, and surrounded by nature.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="fruit-gatherer-analysis" role="tabpanel" aria-labelledby="fruit-gatherer-tab-analysis" hidden>
               <h4>Analysis</h4>
               <p>Amorsolo uses warm colors and sunlight to pull the viewer's attention toward the woman, while the darker background helps her stand out. The scene is gently composed to feel balanced, serene, and idealized.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="fruit-gatherer-interpretation" role="tabpanel" aria-labelledby="fruit-gatherer-tab-interpretation" hidden>
               <h4>Interpretation</h4>
               <p>The artwork reflects simplicity, modesty, and a close relationship between people and the natural world. It also reinforces the image of the dalagang Filipina as a symbol of grace and cultural identity.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="fruit-gatherer-judgment" role="tabpanel" aria-labelledby="fruit-gatherer-tab-judgment" hidden>
               <h4>Judgment</h4>
               <p><em>Fruit Gatherer</em> is visually gentle and emotionally clear. Its appeal comes from how it transforms an everyday rural moment into an image of beauty, peace, and national character.</p>
             </div>
           </div>
-        </details>
+        </section>
         <div class="gallery-card__meta"><span>Fernando Amorsolo</span><span>Filipina Ideal</span></div>
+        </div>
       </article>
 
       <article class="gallery-card" data-reveal data-category="amorsolo">
+        <div class="gallery-card__stage">
         <div class="gallery-card__image">
           <img src="images/artwork/fernando-cueto-amorsolos-hope-in-the-ruins-of-manila-1.webp" alt="Hope in the Ruins of Manila by Fernando Amorsolo showing a mother and child in a devastated wartime city">
         </div>
+        </div>
+        <div class="gallery-card__details">
         <div class="gallery-card__header">
+          <div class="gallery-card__kicker"><span>05</span><span>Fernando Amorsolo</span></div>
           <h3>Hope in the Ruins of Manila</h3>
           <p>This painting captures the destruction left by World War II while placing a mother and child at its emotional center, making hope visible within grief and ruin.</p>
         </div>
@@ -207,51 +250,52 @@
           <div><strong>Medium:</strong> <span>Oil on canvas</span></div>
           <div><strong>Location:</strong> <span>Private collection</span></div>
         </div>
-        <details class="analysis-panel">
-          <summary>Art Appreciation analysis</summary>
+        <section class="analysis-panel" aria-label="Curatorial reading for Hope in the Ruins of Manila">
+          <div class="analysis-tabs" role="tablist" aria-label="Curatorial reading sections for Hope in the Ruins of Manila">
+            <button class="analysis-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="hope-description" id="hope-tab-description" data-tab-target="hope-description">Description</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="hope-analysis" id="hope-tab-analysis" data-tab-target="hope-analysis">Analysis</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="hope-interpretation" id="hope-tab-interpretation" data-tab-target="hope-interpretation">Interpretation</button>
+            <button class="analysis-tab" type="button" role="tab" aria-selected="false" aria-controls="hope-judgment" id="hope-tab-judgment" data-tab-target="hope-judgment">Judgment</button>
+          </div>
           <div class="analysis-panel__content">
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block is-active" id="hope-description" role="tabpanel" aria-labelledby="hope-tab-description">
               <h4>Description</h4>
               <p>The work shows a mother holding a baby in the middle of a destroyed urban landscape. Fallen bodies, broken structures, and dark surroundings emphasize the devastation around them.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="hope-analysis" role="tabpanel" aria-labelledby="hope-tab-analysis" hidden>
               <h4>Analysis</h4>
               <p>Amorsolo shifts from his usual pastoral brightness to darker tones and heavier shadows, but he still uses light strategically. The brighter treatment of the mother and child draws the eye and creates a clear emotional focal point.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="hope-interpretation" role="tabpanel" aria-labelledby="hope-tab-interpretation" hidden>
               <h4>Interpretation</h4>
               <p>The painting reflects fear, suffering, and the civilian cost of war, yet it also insists on resilience. The mother and child stand as symbols of protection, survival, and the possibility of renewal after catastrophe.</p>
             </div>
-            <div class="analysis-panel__block">
+            <div class="analysis-panel__block" id="hope-judgment" role="tabpanel" aria-labelledby="hope-tab-judgment" hidden>
               <h4>Judgment</h4>
               <p>This is one of Amorsolo's most affecting works because it confronts tragedy without losing sight of human endurance. It gives historical trauma a deeply personal and memorable image.</p>
             </div>
           </div>
-        </details>
+        </section>
         <div class="gallery-card__meta"><span>Fernando Amorsolo</span><span>War and Resilience</span></div>
+        </div>
       </article>
     </section>
 
     <section class="spotlight" data-reveal>
       <div>
-        <span class="eyebrow">Reading Beyond the Image</span>
-        <h2>Art Appreciation becomes stronger when image, history, and interpretation work together.</h2>
-        <p>Each artwork here can be approached through description, analysis, interpretation, and judgment. That structure keeps the gallery useful for class discussion while staying clean and readable on the page.</p>
-        <a class="button" href="members.html">Meet the Group</a>
+        <span class="eyebrow">Beyond the Frame</span>
+        <h2>Works of art reveal more when history and interpretation are placed beside the image.</h2>
+        <p>Each entry in this gallery is organized through description, analysis, interpretation, and judgment, offering visitors a clearer way to engage with the meaning of the work.</p>
+        <a class="button" href="members.html">Meet the Curatorial Team</a>
       </div>
       <div class="spotlight__image">
         <img src="images/artwork/fernando-cueto-amorsolos-hope-in-the-ruins-of-manila-1.webp" alt="Hope in the Ruins of Manila by Fernando Amorsolo used as the spotlight artwork">
       </div>
     </section>
   </main>
-  <footer class="page-shell site-footer">
-    <p>The gallery now presents real artworks, historical context, and short analyses in a format ready for your Art Appreciation project.</p>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="members.html">Members</a>
-    </div>
-  </footer>
+  <button class="back-to-top" type="button" aria-label="Back to top" data-back-to-top>
+    <span aria-hidden="true">&uarr;</span>
+  </button>
   <script src="scripts/site.js"></script>
   <script src="scripts/gallery.js"></script>
 </body>
