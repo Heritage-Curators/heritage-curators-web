@@ -36,3 +36,17 @@ Favorite Art Style: Surrealism
 
 Why I Appreciate Art: I appreciate art because it turns imagination into evidence of human ideas—helping me explore meaning, symbolism, and perspectives in ways that make research more engaging and more accurate.
 
+
+
+Name:De Guzman, Anthony V.
+
+Role: Content researcher
+
+Favorite Art Style: Realism 
+
+Why I Appreciate Art : I appreciate art because it expresses feelings and ideas creatively. It inspires imagination and helps me see the world in a different way.
+
+Name: Ron Cristofer Ravancho
+Role: Analyst
+Favorite Art Style: Realism / Portrait Sketching 
+Why I Appreciate Art: I appreciate art because it captures raw human emotion and tells stories without using words. It reminds us of our shared experiences.

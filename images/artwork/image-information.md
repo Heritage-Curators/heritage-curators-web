@@ -1,4 +1,4 @@
-image: planting-rice.jpg
+image: planting-rice.webp
 
 Title: Planting Rice
 
@@ -34,9 +34,9 @@ Fernando Amorsolo, known for his mastery of light, used warm tones and soft illu
 
 \-----------------
 
-image: the-blood-compact.png
+image: the-blood-compact.webp
 
-Title: The Blood Compact 
+Title: The Blood Compact
 
 
 
@@ -68,7 +68,7 @@ Juan Luna created this artwork during the Spanish colonial period to highlight t
 
 ===================
 
-image: spolarium.jpg
+image: spolarium.webp
 
 Title: Spoliarium
 
@@ -108,7 +108,7 @@ The artwork gained international recognition after winning the first gold medal 
 
 
 
-image: fruit-gatherer-1950-fernando-amorsolo.jpg
+image: fruit-gatherer-1950-fernando-amorsolo.webp
 
 Title: Fruit Gatherer
 
@@ -148,7 +148,7 @@ Created during the mid-20th century, the artwork reflects Amorsolo’s vision of
 
 
 
-image: fruit-gatherer-1950-fernando-amorsolo.jpg
+image: fruit-gatherer-1950-fernando-amorsolo.webp
 
 Title: Hope in the Ruins of Manila
 
@@ -170,7 +170,7 @@ Location (if applicable): Private collection
 
 
 
-Background: 
+Background:
 
 This painting depicts the aftermath of the Battle of Manila during World War II, showing a devastated city filled with ruins, fallen bodies, and destruction. At the center, a mother carrying her child stands out, symbolizing protection, resilience, and hope amid chaos.
 
