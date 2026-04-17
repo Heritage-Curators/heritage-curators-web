@@ -4,138 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Heritage Curators | Gallery</title>
-  <style>
-    :root {
-      --surface: rgba(255, 248, 236, 0.88);
-      --surface-strong: #fffaf1;
-      --line: rgba(63, 42, 24, 0.14);
-      --text: #24180f;
-      --muted: #6f5b49;
-      --accent: #a2482d;
-      --shadow: 0 20px 45px rgba(58, 37, 21, 0.12);
-      --radius-lg: 28px;
-      --radius-md: 20px;
-      --max-width: 1180px;
-      --font-display: Georgia, "Times New Roman", serif;
-      --font-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0; font-family: var(--font-body); color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(226, 173, 114, 0.45), transparent 32%),
-        radial-gradient(circle at right, rgba(162, 72, 45, 0.15), transparent 28%),
-        linear-gradient(180deg, #f8f2e7 0%, #efe3d0 100%);
-      min-height: 100vh;
-    }
-    body.menu-open { overflow: hidden; }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    .page-shell { width: min(var(--max-width), calc(100% - 2rem)); margin: 0 auto; }
-    .site-header {
-      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px);
-      background: rgba(245, 239, 228, 0.82); border-bottom: 1px solid rgba(63, 42, 24, 0.08);
-    }
-    .site-header__inner {
-      width: min(var(--max-width), calc(100% - 2rem)); margin: 0 auto; display: flex;
-      align-items: center; justify-content: space-between; padding: 1rem 0; gap: 1rem;
-    }
-    .brand { display: flex; align-items: center; gap: 0.9rem; }
-    .brand__mark {
-      width: 46px; height: 46px; border-radius: 16px; display: grid; place-items: center;
-      background: linear-gradient(135deg, #8d3d26, #d28f59); color: #fff7ef;
-      font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; box-shadow: var(--shadow);
-    }
-    .brand__text strong, .brand__text span { display: block; }
-    .brand__text strong { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase; }
-    .brand__text span { color: var(--muted); font-size: 0.88rem; }
-    .nav-toggle {
-      display: none; border: 0; background: var(--surface-strong); color: var(--text);
-      border-radius: 999px; padding: 0.75rem 1rem; font: inherit; box-shadow: var(--shadow); cursor: pointer;
-    }
-    .site-nav { display: flex; align-items: center; gap: 0.65rem; }
-    .site-nav a {
-      padding: 0.75rem 1rem; border-radius: 999px; color: var(--muted);
-      transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
-    }
-    .site-nav a:hover, .site-nav a:focus-visible {
-      background: rgba(162, 72, 45, 0.08); color: var(--text); transform: translateY(-1px); outline: none;
-    }
-    .site-nav a.is-active { background: var(--text); color: #fffaf1; }
-    main { padding: 2rem 0 4rem; }
-    .page-intro, .filter-panel, .gallery-card, .spotlight, .site-footer {
-      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow);
-    }
-    .page-intro {
-      padding: 2.4rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 0.55fr);
-      gap: 1.5rem; align-items: center; margin-top: 1.25rem;
-    }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 0.85rem; border-radius: 999px;
-      background: rgba(162, 72, 45, 0.08); color: var(--accent); font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
-    }
-    h1, h2, h3 { font-family: var(--font-display); margin: 0; line-height: 1.05; }
-    h1 { font-size: clamp(2.8rem, 7vw, 4.8rem); margin-top: 1rem; max-width: 12ch; }
-    p { color: var(--muted); line-height: 1.7; }
-    .intro-image, .spotlight__image, .gallery-card__image { overflow: hidden; background: #d8c0a2; }
-    .intro-image { border-radius: 20px; min-height: 250px; }
-    .spotlight__image { min-height: 280px; border-radius: 20px; }
-    .gallery-card__image { aspect-ratio: 4 / 3; border-radius: var(--radius-md); }
-    .intro-image img, .spotlight__image img, .gallery-card__image img { width: 100%; height: 100%; object-fit: cover; }
-    .section { margin-top: 1.5rem; }
-    .filter-panel { padding: 1.2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
-    .filter-label { font-size: 0.95rem; color: var(--muted); margin-right: 0.25rem; }
-    .filter-chip {
-      border: 1px solid var(--line); background: rgba(255, 250, 241, 0.76); color: var(--text);
-      border-radius: 999px; padding: 0.7rem 1rem; font: inherit; cursor: pointer;
-      transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
-    }
-    .filter-chip:hover, .filter-chip:focus-visible { transform: translateY(-1px); outline: none; background: rgba(162, 72, 45, 0.1); }
-    .filter-chip.is-active { background: var(--text); color: #fffaf1; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-    .gallery-card { padding: 1rem; display: grid; gap: 1rem; transition: transform 0.28s ease, opacity 0.28s ease; }
-    .gallery-card.is-hidden { opacity: 0.22; transform: scale(0.98); }
-    .gallery-card__meta {
-      display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: var(--muted); font-size: 0.92rem;
-    }
-    .gallery-card h3 { font-size: 1.45rem; margin-bottom: 0.45rem; }
-    .spotlight {
-      margin-top: 1.5rem; padding: 1.35rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
-      gap: 1.25rem; align-items: center;
-    }
-    .button {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; padding: 0.95rem 1.25rem;
-      border-radius: 999px; font-weight: 600; background: var(--text); color: #fffaf1; box-shadow: var(--shadow); transition: transform 0.25s ease;
-    }
-    .button:hover, .button:focus-visible { transform: translateY(-2px); outline: none; }
-    .site-footer {
-      margin: 1.5rem 0 2.25rem; padding: 1.4rem 1.6rem; display: flex; justify-content: space-between;
-      gap: 1rem; align-items: center; flex-wrap: wrap;
-    }
-    .footer-links { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .footer-links a { color: var(--muted); font-size: 0.92rem; }
-    [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
-    @media (max-width: 920px) {
-      .page-intro, .spotlight { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .nav-toggle { display: inline-flex; }
-      .site-nav {
-        position: fixed; inset: 82px 1rem auto 1rem; flex-direction: column; align-items: stretch; padding: 1rem;
-        background: rgba(255, 250, 241, 0.96); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow);
-        transform: translateY(-18px); opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease;
-      }
-      .site-nav.is-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
-    }
-    @media (max-width: 640px) {
-      .page-shell, .site-header__inner { width: min(var(--max-width), calc(100% - 1rem)); }
-      main { padding-top: 1rem; }
-      .page-intro, .filter-panel, .gallery-card, .spotlight, .site-footer { padding: 1.2rem; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      h1 { font-size: clamp(2.5rem, 14vw, 4rem); }
-    }
-  </style>
+  <link rel="stylesheet" href="styles/gallery.css">
 </head>
 <body data-page="gallery">
   <header class="site-header">
@@ -155,117 +24,235 @@
   <main class="page-shell">
     <section class="page-intro" data-reveal>
       <div>
-        <span class="eyebrow">Curated Collection</span>
-        <h1>Placeholder exhibits with a consistent, scalable gallery system.</h1>
-        <p>This page establishes the visual rhythm for future archive entries, exhibits, and collection highlights. The structure is ready for real content, but already behaves like a designed gallery rather than a temporary mockup.</p>
+        <span class="eyebrow">Art Appreciation Gallery</span>
+        <h1>Five Filipino masterpieces presented with context and analysis.</h1>
+        <p>This page now combines artwork images, historical background, and short Art Appreciation readings so each piece can be understood through subject, composition, symbolism, and meaning.</p>
       </div>
-      <div class="intro-image"><img src="https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=1200&q=80" alt="Museum visitor viewing framed historical works"></div>
+      <div class="intro-image">
+        <img src="images/artwork/spolarium.webp" alt="Spoliarium by Juan Luna used as the gallery banner artwork">
+      </div>
     </section>
+
     <section class="section filter-panel" data-reveal>
-      <span class="filter-label">Filter by collection:</span>
+      <span class="filter-label">Filter by artist:</span>
       <button class="filter-chip is-active" type="button" data-filter="all">All</button>
-      <button class="filter-chip" type="button" data-filter="portraits">Portraits</button>
-      <button class="filter-chip" type="button" data-filter="artifacts">Artifacts</button>
-      <button class="filter-chip" type="button" data-filter="spaces">Spaces</button>
+      <button class="filter-chip" type="button" data-filter="amorsolo">Fernando Amorsolo</button>
+      <button class="filter-chip" type="button" data-filter="luna">Juan Luna</button>
     </section>
+
     <section class="section gallery-grid">
-      <article class="gallery-card" data-reveal data-category="portraits">
-        <div class="gallery-card__image"><img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80" alt="Portrait reference in exhibition space"></div>
-        <div><h3>Founders of the Archive</h3><p>A portrait-led placeholder card showing how exhibition titles, curator notes, and future descriptions will sit inside the shared card system.</p></div>
-        <div class="gallery-card__meta"><span>Portraits</span><span>Card 01</span></div>
+      <article class="gallery-card" data-reveal data-category="amorsolo">
+        <div class="gallery-card__image">
+          <img src="images/artwork/planting-rice.webp" alt="Planting Rice by Fernando Amorsolo showing Filipino farmers working together in a bright rice field">
+        </div>
+        <div class="gallery-card__header">
+          <h3>Planting Rice</h3>
+          <p>This painting depicts Filipino farmers working together in a rice field under bright sunlight, presenting rural labor as peaceful, dignified, and deeply connected to the land.</p>
+        </div>
+        <div class="gallery-card__facts">
+          <div><strong>Artist:</strong> <span>Fernando Amorsolo</span></div>
+          <div><strong>Year:</strong> <span>1921</span></div>
+          <div><strong>Medium:</strong> <span>Oil on canvas</span></div>
+          <div><strong>Location:</strong> <span>National Museum of Fine Arts, Manila</span></div>
+        </div>
+        <details class="analysis-panel">
+          <summary>Art Appreciation analysis</summary>
+          <div class="analysis-panel__content">
+            <div class="analysis-panel__block">
+              <h4>Description</h4>
+              <p><em>Planting Rice</em> shows men and women planting seedlings together in a broad, water-filled field while a farmer with a carabao works in the background. The landscape, bright sky, and distant mountains create an idealized view of provincial life.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Analysis</h4>
+              <p>Amorsolo uses warm sunlight, luminous reflections, and a wide composition to unify the workers with the landscape. His soft brushwork and bright color palette make the scene feel calm and orderly rather than physically harsh.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Interpretation</h4>
+              <p>The painting celebrates bayanihan, rural resilience, and the dignity of ordinary Filipino labor. It presents the countryside as a source of identity, pride, and harmony with nature.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Judgment</h4>
+              <p>This work remains one of the most recognizable images in Philippine art because it turns daily agricultural work into a graceful national image. Even with its idealized tone, it powerfully reflects Amorsolo's mastery of Philippine light.</p>
+            </div>
+          </div>
+        </details>
+        <div class="gallery-card__meta"><span>Fernando Amorsolo</span><span>Rural Life</span></div>
       </article>
-      <article class="gallery-card" data-reveal data-category="artifacts">
-        <div class="gallery-card__image"><img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=900&q=80" alt="Historic objects on display"></div>
-        <div><h3>Objects in Preservation</h3><p>Placeholder content for artifact stories, provenance notes, conservation summaries, and item-specific metadata in a polished layout.</p></div>
-        <div class="gallery-card__meta"><span>Artifacts</span><span>Card 02</span></div>
+
+      <article class="gallery-card" data-reveal data-category="luna">
+        <div class="gallery-card__image">
+          <img src="images/artwork/the-blood-compact.webp" alt="The Blood Compact by Juan Luna showing Datu Sikatuna and Miguel Lopez de Legazpi sealing an agreement">
+        </div>
+        <div class="gallery-card__header">
+          <h3>The Blood Compact</h3>
+          <p>This painting shows the 1565 sandugo between Datu Sikatuna and Miguel Lopez de Legazpi, turning a diplomatic ritual into a statement about equality, dignity, and historical memory.</p>
+        </div>
+        <div class="gallery-card__facts">
+          <div><strong>Artist:</strong> <span>Juan Luna</span></div>
+          <div><strong>Year:</strong> <span>1886</span></div>
+          <div><strong>Medium:</strong> <span>Oil on canvas</span></div>
+          <div><strong>Location:</strong> <span>Malacanang Palace, Manila</span></div>
+        </div>
+        <details class="analysis-panel">
+          <summary>Art Appreciation analysis</summary>
+          <div class="analysis-panel__content">
+            <div class="analysis-panel__block">
+              <h4>Description</h4>
+              <p>The artwork presents the blood compact ceremony between the Bohol chieftain Datu Sikatuna and the Spanish explorer Miguel Lopez de Legazpi. Their gathered companions and the formal setting heighten the importance of the event.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Analysis</h4>
+              <p>Luna uses an academic style, strong contrasts of light and shadow, and a carefully staged composition to dramatize the agreement. Viewing Sikatuna prominently helps frame the encounter as a meeting between equals rather than a scene of submission.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Interpretation</h4>
+              <p>The painting can be read as a nationalist statement. It reminds viewers that Filipinos entered diplomacy and alliance with dignity, challenging colonial narratives that reduced them to passive subjects.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Judgment</h4>
+              <p><em>The Blood Compact</em> succeeds both as historical storytelling and political symbolism. Its visual authority helps reclaim a key moment in Philippine history with pride and seriousness.</p>
+            </div>
+          </div>
+        </details>
+        <div class="gallery-card__meta"><span>Juan Luna</span><span>Historical Narrative</span></div>
       </article>
-      <article class="gallery-card" data-reveal data-category="spaces">
-        <div class="gallery-card__image"><img src="https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=900&q=80" alt="Interior heritage exhibition space"></div>
-        <div><h3>Rooms of Memory</h3><p>A spatial collection card meant for galleries, reconstructed heritage rooms, or immersive reference environments.</p></div>
-        <div class="gallery-card__meta"><span>Spaces</span><span>Card 03</span></div>
+
+      <article class="gallery-card" data-reveal data-category="luna">
+        <div class="gallery-card__image">
+          <img src="images/artwork/spolarium.webp" alt="Spoliarium by Juan Luna showing fallen gladiators being dragged in a dark Roman interior">
+        </div>
+        <div class="gallery-card__header">
+          <h3>Spoliarium</h3>
+          <p>This monumental painting depicts fallen gladiators dragged into a Roman spoliarium, using violence and grief to symbolize oppression and the loss of human dignity.</p>
+        </div>
+        <div class="gallery-card__facts">
+          <div><strong>Artist:</strong> <span>Juan Luna</span></div>
+          <div><strong>Year:</strong> <span>1884</span></div>
+          <div><strong>Medium:</strong> <span>Oil on canvas</span></div>
+          <div><strong>Location:</strong> <span>National Museum of Fine Arts, Manila</span></div>
+        </div>
+        <details class="analysis-panel">
+          <summary>Art Appreciation analysis</summary>
+          <div class="analysis-panel__content">
+            <div class="analysis-panel__block">
+              <h4>Description</h4>
+              <p>The scene shows dead or defeated gladiators dragged across a stone floor while grieving figures and distant onlookers witness the aftermath. The setting is dark, heavy, and emotionally charged.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Analysis</h4>
+              <p>Luna builds a diagonal, forceful composition using harsh light, deep shadows, and rich red-brown tones. The physical weight of the bodies and the movement of the figures create a dramatic sense of brutality and exhaustion.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Interpretation</h4>
+              <p>Beyond its Roman subject, the painting is widely understood as an allegory of colonial oppression. The fallen gladiators can be seen as the suffering Filipino people, while the spectators stand for power structures that ignore injustice.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Judgment</h4>
+              <p><em>Spoliarium</em> is a landmark of Philippine art because it combines technical excellence with emotional and political force. Its international recognition helped affirm Filipino artistic brilliance on the world stage.</p>
+            </div>
+          </div>
+        </details>
+        <div class="gallery-card__meta"><span>Juan Luna</span><span>Colonial Allegory</span></div>
       </article>
-      <article class="gallery-card" data-reveal data-category="portraits">
-        <div class="gallery-card__image"><img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" alt="Historical manuscript and portrait materials"></div>
-        <div><h3>Letters and Likeness</h3><p>Designed for a future pairing of biographical content, archival text, and referenced portraiture.</p></div>
-        <div class="gallery-card__meta"><span>Portraits</span><span>Card 04</span></div>
+
+      <article class="gallery-card" data-reveal data-category="amorsolo">
+        <div class="gallery-card__image">
+          <img src="images/artwork/fruit-gatherer-1950-fernando-amorsolo.webp" alt="Fruit Gatherer by Fernando Amorsolo showing a Filipina woman with a basket of fruit in a rural setting">
+        </div>
+        <div class="gallery-card__header">
+          <h3>Fruit Gatherer</h3>
+          <p>This painting features a Filipina woman carrying freshly gathered fruit, highlighting natural abundance, traditional beauty, and the quiet rhythm of provincial life.</p>
+        </div>
+        <div class="gallery-card__facts">
+          <div><strong>Artist:</strong> <span>Fernando Amorsolo</span></div>
+          <div><strong>Year:</strong> <span>1950</span></div>
+          <div><strong>Medium:</strong> <span>Oil on board</span></div>
+          <div><strong>Location:</strong> <span>Vargas Museum, University of the Philippines</span></div>
+        </div>
+        <details class="analysis-panel">
+          <summary>Art Appreciation analysis</summary>
+          <div class="analysis-panel__content">
+            <div class="analysis-panel__block">
+              <h4>Description</h4>
+              <p>The painting shows a young Filipina in traditional clothing under a tree, holding a basket filled with fruit. The setting is bright, calm, and surrounded by nature.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Analysis</h4>
+              <p>Amorsolo uses warm colors and sunlight to pull the viewer's attention toward the woman, while the darker background helps her stand out. The scene is gently composed to feel balanced, serene, and idealized.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Interpretation</h4>
+              <p>The artwork reflects simplicity, modesty, and a close relationship between people and the natural world. It also reinforces the image of the dalagang Filipina as a symbol of grace and cultural identity.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Judgment</h4>
+              <p><em>Fruit Gatherer</em> is visually gentle and emotionally clear. Its appeal comes from how it transforms an everyday rural moment into an image of beauty, peace, and national character.</p>
+            </div>
+          </div>
+        </details>
+        <div class="gallery-card__meta"><span>Fernando Amorsolo</span><span>Filipina Ideal</span></div>
       </article>
-      <article class="gallery-card" data-reveal data-category="artifacts">
-        <div class="gallery-card__image"><img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80" alt="Close-up of curated heritage object display"></div>
-        <div><h3>Crafted for Ceremony</h3><p>Another placeholder artifact card proving the grid can scale while preserving equal image proportions and clean text rhythm.</p></div>
-        <div class="gallery-card__meta"><span>Artifacts</span><span>Card 05</span></div>
-      </article>
-      <article class="gallery-card" data-reveal data-category="spaces">
-        <div class="gallery-card__image"><img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80" alt="Gallery hall prepared for exhibition"></div>
-        <div><h3>Hallway to the Collection</h3><p>A consistent card ready for wayfinding stories, featured sections, and exhibition zone previews.</p></div>
-        <div class="gallery-card__meta"><span>Spaces</span><span>Card 06</span></div>
+
+      <article class="gallery-card" data-reveal data-category="amorsolo">
+        <div class="gallery-card__image">
+          <img src="images/artwork/fernando-cueto-amorsolos-hope-in-the-ruins-of-manila-1.webp" alt="Hope in the Ruins of Manila by Fernando Amorsolo showing a mother and child in a devastated wartime city">
+        </div>
+        <div class="gallery-card__header">
+          <h3>Hope in the Ruins of Manila</h3>
+          <p>This painting captures the destruction left by World War II while placing a mother and child at its emotional center, making hope visible within grief and ruin.</p>
+        </div>
+        <div class="gallery-card__facts">
+          <div><strong>Artist:</strong> <span>Fernando Amorsolo</span></div>
+          <div><strong>Year:</strong> <span>1945</span></div>
+          <div><strong>Medium:</strong> <span>Oil on canvas</span></div>
+          <div><strong>Location:</strong> <span>Private collection</span></div>
+        </div>
+        <details class="analysis-panel">
+          <summary>Art Appreciation analysis</summary>
+          <div class="analysis-panel__content">
+            <div class="analysis-panel__block">
+              <h4>Description</h4>
+              <p>The work shows a mother holding a baby in the middle of a destroyed urban landscape. Fallen bodies, broken structures, and dark surroundings emphasize the devastation around them.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Analysis</h4>
+              <p>Amorsolo shifts from his usual pastoral brightness to darker tones and heavier shadows, but he still uses light strategically. The brighter treatment of the mother and child draws the eye and creates a clear emotional focal point.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Interpretation</h4>
+              <p>The painting reflects fear, suffering, and the civilian cost of war, yet it also insists on resilience. The mother and child stand as symbols of protection, survival, and the possibility of renewal after catastrophe.</p>
+            </div>
+            <div class="analysis-panel__block">
+              <h4>Judgment</h4>
+              <p>This is one of Amorsolo's most affecting works because it confronts tragedy without losing sight of human endurance. It gives historical trauma a deeply personal and memorable image.</p>
+            </div>
+          </div>
+        </details>
+        <div class="gallery-card__meta"><span>Fernando Amorsolo</span><span>War and Resilience</span></div>
       </article>
     </section>
+
     <section class="spotlight" data-reveal>
       <div>
-        <span class="eyebrow">Featured Placeholder</span>
-        <h2>Use the gallery as the visual storytelling engine.</h2>
-        <p>In the next phase we can connect these cards to richer descriptions, modal previews, collection categories, or a searchable exhibit index without changing the overall UI system.</p>
-        <a class="button" href="members.html">See the Curatorial Team</a>
+        <span class="eyebrow">Reading Beyond the Image</span>
+        <h2>Art Appreciation becomes stronger when image, history, and interpretation work together.</h2>
+        <p>Each artwork here can be approached through description, analysis, interpretation, and judgment. That structure keeps the gallery useful for class discussion while staying clean and readable on the page.</p>
+        <a class="button" href="members.html">Meet the Group</a>
       </div>
-      <div class="spotlight__image"><img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80" alt="Team planning an exhibition layout"></div>
+      <div class="spotlight__image">
+        <img src="images/artwork/fernando-cueto-amorsolos-hope-in-the-ruins-of-manila-1.webp" alt="Hope in the Ruins of Manila by Fernando Amorsolo used as the spotlight artwork">
+      </div>
     </section>
   </main>
   <footer class="page-shell site-footer">
-    <p>Gallery phase one uses the same shell, spacing system, and card language as the rest of the site.</p>
+    <p>The gallery now presents real artworks, historical context, and short analyses in a format ready for your Art Appreciation project.</p>
     <div class="footer-links">
       <a href="home.html">Home</a>
       <a href="gallery.html">Gallery</a>
       <a href="members.html">Members</a>
     </div>
   </footer>
-  <script>
-    const body = document.body;
-    const page = body.dataset.page;
-    const nav = document.getElementById("site-nav");
-    const toggle = document.querySelector(".nav-toggle");
-    document.querySelectorAll("[data-nav]").forEach((link) => {
-      if (link.dataset.nav === page) {
-        link.classList.add("is-active");
-        link.setAttribute("aria-current", "page");
-      }
-    });
-    if (toggle && nav) {
-      toggle.addEventListener("click", () => {
-        const isOpen = nav.classList.toggle("is-open");
-        toggle.setAttribute("aria-expanded", String(isOpen));
-        body.classList.toggle("menu-open", isOpen);
-      });
-      nav.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          nav.classList.remove("is-open");
-          toggle.setAttribute("aria-expanded", "false");
-          body.classList.remove("menu-open");
-        });
-      });
-    }
-    const reveals = document.querySelectorAll("[data-reveal]");
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.18 });
-    reveals.forEach((item) => revealObserver.observe(item));
-    const chips = document.querySelectorAll("[data-filter]");
-    const cards = document.querySelectorAll(".gallery-card");
-    chips.forEach((chip) => {
-      chip.addEventListener("click", () => {
-        const filter = chip.dataset.filter;
-        chips.forEach((item) => item.classList.remove("is-active"));
-        chip.classList.add("is-active");
-        cards.forEach((card) => {
-          const matches = filter === "all" || card.dataset.category === filter;
-          card.classList.toggle("is-hidden", !matches);
-        });
-      });
-    });
-  </script>
+  <script src="scripts/site.js"></script>
+  <script src="scripts/gallery.js"></script>
 </body>
 </html>
