@@ -58,3 +58,61 @@ document.querySelectorAll(".analysis-panel").forEach((panel) => {
     });
   });
 });
+
+const artworkTriggers = document.querySelectorAll("[data-artwork-trigger]");
+const lightbox = document.querySelector("[data-artwork-lightbox]");
+
+if (artworkTriggers.length && lightbox) {
+  const lightboxImage = lightbox.querySelector(".artwork-lightbox__image");
+  const lightboxTitle = lightbox.querySelector("#artwork-lightbox-title");
+  const lightboxDescription = lightbox.querySelector(".artwork-lightbox__description");
+  const lightboxCloseControls = lightbox.querySelectorAll("[data-artwork-close]");
+  const lightboxCloseButton = lightbox.querySelector(".artwork-lightbox__close");
+  let lastTrigger = null;
+
+  const closeLightbox = () => {
+    lightbox.hidden = true;
+    document.body.classList.remove("lightbox-open");
+    lightboxImage.src = "";
+    lightboxImage.alt = "";
+    lightboxTitle.textContent = "";
+    lightboxDescription.textContent = "";
+
+    if (lastTrigger) {
+      lastTrigger.focus();
+    }
+  };
+
+  const openLightbox = (trigger) => {
+    const image = trigger.querySelector("img");
+
+    if (!image) {
+      return;
+    }
+
+    lastTrigger = trigger;
+    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.alt = image.alt;
+    lightboxTitle.textContent = trigger.dataset.artworkTitle || image.alt;
+    lightboxDescription.textContent = image.alt;
+    lightbox.hidden = false;
+    document.body.classList.add("lightbox-open");
+    lightboxCloseButton.focus();
+  };
+
+  artworkTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      openLightbox(trigger);
+    });
+  });
+
+  lightboxCloseControls.forEach((control) => {
+    control.addEventListener("click", closeLightbox);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !lightbox.hidden) {
+      closeLightbox();
+    }
+  });
+}

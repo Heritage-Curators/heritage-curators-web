@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Heritage Curators | Gallery</title>
-  <link rel="stylesheet" href="styles/gallery.css?v=20260418">
+  <link rel="stylesheet" href="styles/gallery.css?v=20260418b">
 </head>
 <body data-page="gallery">
   <header class="site-header">
@@ -34,9 +34,9 @@
     <section class="section gallery-grid" aria-label="Artwork exhibition sequence">
       <article class="gallery-card" data-reveal data-category="amorsolo">
         <div class="gallery-card__stage">
-        <div class="gallery-card__image">
+        <button class="gallery-card__image" type="button" data-artwork-trigger data-artwork-title="Planting Rice" aria-label="View Planting Rice in a larger image">
           <img src="images/artwork/planting-rice.webp" alt="Planting Rice by Fernando Amorsolo showing Filipino farmers working together in a bright rice field">
-        </div>
+        </button>
         </div>
         <div class="gallery-card__details">
         <div class="gallery-card__header">
@@ -82,9 +82,9 @@
 
       <article class="gallery-card" data-reveal data-category="luna">
         <div class="gallery-card__stage">
-        <div class="gallery-card__image">
+        <button class="gallery-card__image" type="button" data-artwork-trigger data-artwork-title="The Blood Compact" aria-label="View The Blood Compact in a larger image">
           <img src="images/artwork/the-blood-compact.webp" alt="The Blood Compact by Juan Luna showing Datu Sikatuna and Miguel Lopez de Legazpi sealing an agreement">
-        </div>
+        </button>
         </div>
         <div class="gallery-card__details">
         <div class="gallery-card__header">
@@ -130,9 +130,9 @@
 
       <article class="gallery-card" data-reveal data-category="luna">
         <div class="gallery-card__stage">
-        <div class="gallery-card__image">
+        <button class="gallery-card__image" type="button" data-artwork-trigger data-artwork-title="Spoliarium" aria-label="View Spoliarium in a larger image">
           <img src="images/artwork/spolarium.webp" alt="Spoliarium by Juan Luna showing fallen gladiators being dragged in a dark Roman interior">
-        </div>
+        </button>
         </div>
         <div class="gallery-card__details">
         <div class="gallery-card__header">
@@ -178,9 +178,9 @@
 
       <article class="gallery-card" data-reveal data-category="amorsolo">
         <div class="gallery-card__stage">
-        <div class="gallery-card__image">
+        <button class="gallery-card__image" type="button" data-artwork-trigger data-artwork-title="Fruit Gatherer" aria-label="View Fruit Gatherer in a larger image">
           <img src="images/artwork/fruit-gatherer-1950-fernando-amorsolo.webp" alt="Fruit Gatherer by Fernando Amorsolo showing a Filipina woman with a basket of fruit in a rural setting">
-        </div>
+        </button>
         </div>
         <div class="gallery-card__details">
         <div class="gallery-card__header">
@@ -226,9 +226,9 @@
 
       <article class="gallery-card" data-reveal data-category="amorsolo">
         <div class="gallery-card__stage">
-        <div class="gallery-card__image">
+        <button class="gallery-card__image" type="button" data-artwork-trigger data-artwork-title="Hope in the Ruins of Manila" aria-label="View Hope in the Ruins of Manila in a larger image">
           <img src="images/artwork/fernando-cueto-amorsolos-hope-in-the-ruins-of-manila-1.webp" alt="Hope in the Ruins of Manila by Fernando Amorsolo showing a mother and child in a devastated wartime city">
-        </div>
+        </button>
         </div>
         <div class="gallery-card__details">
         <div class="gallery-card__header">
@@ -288,7 +288,20 @@
   <button class="back-to-top" type="button" aria-label="Back to top" data-back-to-top>
     <span aria-hidden="true">&uarr;</span>
   </button>
+  <div class="artwork-lightbox" data-artwork-lightbox hidden>
+    <div class="artwork-lightbox__backdrop" data-artwork-close></div>
+    <div class="artwork-lightbox__dialog" role="dialog" aria-modal="true" aria-labelledby="artwork-lightbox-title">
+      <button class="artwork-lightbox__close" type="button" aria-label="Close artwork viewer" data-artwork-close>&times;</button>
+      <div class="artwork-lightbox__frame">
+        <img class="artwork-lightbox__image" src="" alt="">
+      </div>
+      <div class="artwork-lightbox__caption">
+        <h2 id="artwork-lightbox-title"></h2>
+        <p class="artwork-lightbox__description"></p>
+      </div>
+    </div>
+  </div>
   <script src="scripts/site.js?v=20260418"></script>
-  <script src="scripts/gallery.js?v=20260418"></script>
+  <script src="scripts/gallery.js?v=20260418b"></script>
 </body>
 </html>
