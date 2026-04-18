@@ -114,7 +114,7 @@ img { max-width: 100%; display: block; }
 
 main { padding: 1.35rem 0 2.4rem; }
 
-.hero, .section-panel, .cta-strip {
+.hero, .section-panel, .cta-strip, .documentation-card {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -221,6 +221,27 @@ p { color: var(--muted); line-height: 1.65; margin: 0; font-size: 0.95rem; }
 .section { margin-top: 0.95rem; }
 
 .section-panel { padding: 1rem; }
+
+.documentation-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.documentation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.documentation-card {
+  padding: 1rem;
+  background: rgba(30, 26, 24, 0.94);
+}
+
+.documentation-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.08rem;
+}
 
 .section-heading {
   display: flex;
@@ -411,6 +432,9 @@ p { color: var(--muted); line-height: 1.65; margin: 0; font-size: 0.95rem; }
   .cta-strip {
     flex-direction: column;
     align-items: start;
+  }
+  .documentation-grid {
+    grid-template-columns: 1fr;
   }
   .nav-toggle { display: inline-flex; }
   .carousel-card {

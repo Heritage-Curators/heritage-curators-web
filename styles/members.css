@@ -114,7 +114,7 @@ img { max-width: 100%; display: block; }
 
 main { padding: 1.5rem 0 3rem; }
 
-.page-intro, .member-card {
+.page-intro, .member-card, .reflection-panel, .visit-panel, .reflection-card, .visit-card {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -180,6 +180,30 @@ p { color: var(--muted); line-height: 1.65; margin: 0; font-size: 0.95rem; }
 }
 
 .section { margin-top: 1.1rem; }
+
+.reflection-panel,
+.visit-panel {
+  padding: 1rem;
+}
+
+.reflection-grid,
+.visit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.reflection-card,
+.visit-card {
+  padding: 1rem;
+  background: rgba(30, 26, 24, 0.94);
+}
+
+.reflection-card h3,
+.visit-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.08rem;
+}
 
 .section-heading {
   display: flex;
@@ -326,6 +350,8 @@ p { color: var(--muted); line-height: 1.65; margin: 0; font-size: 0.95rem; }
 @media (max-width: 920px) {
   .page-intro { grid-template-columns: 1fr; }
   .member-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .reflection-grid,
+  .visit-grid { grid-template-columns: 1fr; }
   .member-card {
     grid-template-columns: minmax(130px, 165px) minmax(0, 1fr);
     padding: 0.9rem;
@@ -354,7 +380,7 @@ p { color: var(--muted); line-height: 1.65; margin: 0; font-size: 0.95rem; }
 @media (max-width: 640px) {
   .page-shell, .site-header__inner { width: min(var(--max-width), calc(100% - 1rem)); }
   main { padding-top: 1rem; }
-  .page-intro, .member-card { padding: 1rem; }
+  .page-intro, .member-card, .reflection-panel, .visit-panel, .reflection-card, .visit-card { padding: 1rem; }
   .member-grid { grid-template-columns: 1fr; }
   .member-card {
     grid-template-columns: 1fr;
